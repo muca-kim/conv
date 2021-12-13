@@ -38,8 +38,12 @@ public class UserController {
             System.out.println("userId = " + user.getUserId());
             user.setRole(Constants.Role.PERSONAL.getValue());
             String pwd = user.getUserPassword();
+
+            // 패스워드 인코딩
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             user.setUserPassword(encoder.encode(pwd));
+
+            // 유저 등록
             userRepository.save(user);
             return "{\"result\" : " + Result.SUCCESS.getValue() + "}";
         } catch (Exception e) {
