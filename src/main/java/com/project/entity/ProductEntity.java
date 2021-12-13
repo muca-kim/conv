@@ -1,12 +1,16 @@
 package com.project.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @NoArgsConstructor
@@ -29,6 +33,10 @@ public class ProductEntity {
     /** 이미지주소 */
     @Getter
     private String productImg;
+
+    @Transient
+    @Setter
+    private List<RecommendEntity> recommandList;
 
     @Builder
     public ProductEntity(Integer productNo, String productName, String description, Integer recommend) {
