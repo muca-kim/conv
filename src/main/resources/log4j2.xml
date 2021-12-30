@@ -17,10 +17,9 @@
             <AppenderRef ref="console"/>
             <!-- <AppenderRef ref="file"/> -->
         </Logger>
-        <Rootlevel="ERROR">
+        <Root level="ERROR">
             <AppenderRef ref="console"/>
         </Root>
     </Loggers>
 
 </Configuration>
-
