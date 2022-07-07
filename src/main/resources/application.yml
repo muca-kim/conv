@@ -1,0 +1,31 @@
+server:
+  port: 9000
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  resources:
+    static-locations: classpath:/
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/conv?autoReconnect=true&useSSL=false&serverTimezone=UTC
+    username: develop
+    password: 1234
+  jpa:
+    database: mysql
+    hibernate.ddl-auto: none
+    generate-ddl: false
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  thymeleaf:
+    check-template-location: true
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+logging:
+  level:
+    com:
+      project: debug
