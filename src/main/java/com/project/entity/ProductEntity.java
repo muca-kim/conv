@@ -39,11 +39,10 @@ public class ProductEntity {
     private List<RecommendEntity> recommandList;
 
     @Builder
-    public ProductEntity(Integer productNo, String productName, String description, Integer recommend) {
-        this.productNo = productNo;
+    public ProductEntity(String productName, String description, String productImg) {
         this.productName = productName;
         this.description = description;
-        this.recommend = recommend;
+        this.productImg = productImg;
     }
 
 }

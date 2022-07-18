@@ -41,7 +41,7 @@ public class ProductController {
      * @throws IOException
      */
     @ResponseBody
-    @RequestMapping(value = "/getProduct", method = RequestMethod.GET)
+    @RequestMapping(value = "/product", method = RequestMethod.GET)
     public String getProduct(@RequestParam(value = "page") String page, @RequestParam(value = "unit") String unit)
             throws IOException {
         if (log.isDebugEnabled()) {

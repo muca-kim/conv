@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/static/css/common.css" />
     <!-- javascript -->
-    <script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/popper.js/1.15.0/popper.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/static/script/FetchService.js"></script>
@@ -101,7 +101,7 @@
 
             // 페이지별 상품 리스트를 가져옴
             const getProductList = function (page, unit, pageBtnFlag) {
-                let url = `/getProduct?page=${page}&unit=${unit}`;
+                let url = `/product?page=${page}&unit=${unit}`;
                 let promise = requestGet(url);
                 promise.then(function (res) {
                     pageItemCount = res.productList.length;

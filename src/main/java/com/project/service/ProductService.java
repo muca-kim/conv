@@ -1,6 +1,7 @@
 package com.project.service;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.project.entity.ProductEntity;
 import com.project.error.NotFoundException;
@@ -31,7 +32,7 @@ public class ProductService {
         return repository.findByPage(page, unit);
     }
 
-    public List<ProductEntity> findByProductNo(Integer productNo) {
+    public ProductEntity findByProductNo(Integer productNo) {
         return repository.findByProductNo(productNo);
     }
 
@@ -72,11 +73,30 @@ public class ProductService {
      */
     @Transactional
     public int deleteProduct(Integer productNo) {
-        List<ProductEntity> product = repository.findByProductNo(productNo);
-        if (product.isEmpty()) {
-            throw new NotFoundException("not found user");
+        Objects.requireNonNull(productNo, "delete product");
+        ProductEntity product = repository.findByProductNo(productNo);
+        if (Objects.isNull(product)) {
+            throw new NotFoundException("not found product");
         }
-        repository.delete(product.get(0));
+        repository.delete(product);
         return 1;
+    }
+
+    /**
+     * 상품 업데이트
+     *
+     * @param product
+     */
+    @Transactional
+    public void updateProduct(ProductEntity product) {
+        Objects.requireNonNull(product, "update product");
+        ProductEntity prevProduct = repository.findByProductNo(product.getProductNo());
+        if (Objects.isNull(prevProduct)) {
+            throw new NotFoundException("not found product");
+        }
+        prevProduct = ProductEntity.builder().productName(product.getProductName())
+                .description(product.getDescription())
+                .productImg(product.getProductImg()).build();
+
     }
 }
